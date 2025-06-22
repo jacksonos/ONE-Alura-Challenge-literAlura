@@ -12,13 +12,13 @@ import java.net.http.HttpResponse;
 import java.util.List;
 
 public class GutendexClient {
-	private static final String BASE_URL = "https://api.gutendex.com?languages=en&sort=popular";
+	private static final String BASE_URL = "https://gutendex.com/books/?languages=en&sort=popular";
 	private final HttpClient client;
 	private final ObjectMapper mapper;
 
-	public GutendexClient(HttpClient client, ObjectMapper mapper) {
-		this.client = client;
-		this.mapper = mapper;
+	public GutendexClient() {
+		this.client = HttpClient.newHttpClient();
+		this.mapper = new ObjectMapper();
 	}
 
 	public List<BookDTO> getPopularBooks() {
