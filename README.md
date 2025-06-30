@@ -100,4 +100,4 @@ Las dependencias como `jackson-databind` y `google-genai` (si están configurada
 
 ## Licencia 📄
 
-Este proyecto es parte del "Challenge ONE" de Alura Latam y Oracle. Generalmente, los proyectos de desafíos de este tipo suelen ser de código abierto. Consulta el repositorio original para verificar la licencia específica, que comúnmente es MIT o Apache 2.0.
+Este proyecto es de uso libre y educativo como parte del challenge del programa ONE de Oracle + Alura.
