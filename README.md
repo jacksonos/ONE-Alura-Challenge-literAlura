@@ -17,7 +17,7 @@ La aplicación de consola LiterAlura permite las siguientes operaciones:
 * **Listar Autores Vivos en un Determinado Año** ⏳👨‍🏫: Permite al usuario ingresar un año y ver una lista de autores que estaban vivos en ese período.
 * **Listar Libros por Idioma** 🌐🗣️: Filtra y muestra libros según el idioma especificado (por ejemplo, ES para español, EN para inglés, FR para francés, PT para portugués).
 * **Top 10 Libros Más Descargados** 🏆⬇️: Muestra los diez libros con más descargas almacenados en la base de datos.
-* **Estadísticas de Descargas** 📊📉: Genera estadísticas sobre las descargas de libros.
+* **Estadísticas de Descargas** 📊📉: Genera estadísticas sobre las descargas de libros. (Soon ⚒️)
 
 ---
 
