@@ -19,6 +19,8 @@ La aplicación de consola LiterAlura permite las siguientes operaciones:
 * **Top 10 Libros Más Descargados** 🏆⬇️: Muestra los diez libros con más descargas almacenados en la base de datos.
 * **Estadísticas de Descargas** 📊📉: Genera estadísticas sobre las descargas de libros. (Soon ⚒️)
 
+![literalura_mp](https://github.com/user-attachments/assets/1fff7952-c31b-4a1d-a911-e049f9a6bd21)
+
 ---
 
 ## Tecnologías Utilizadas 🛠️
