@@ -1,5 +1,6 @@
 package com.alura.literalura.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -13,9 +14,11 @@ public class Person {
 	private Long id;
 	@Column(unique = true, nullable = false)
 	private String name;
-	private Integer birth_year;
-	private Integer death_year;
-	@ManyToMany(mappedBy = "persons")
+	@JsonAlias("birth_year")
+	private Integer birthYear;
+	@JsonAlias("death_year")
+	private Integer deathYear;
+	@ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER)
 	private Set<Book> books = new HashSet<>();
 
 	public Person() {
@@ -23,8 +26,8 @@ public class Person {
 
 	public Person(String name, Integer birth_year, Integer death_year) {
 		this.name = name;
-		this.birth_year = birth_year;
-		this.death_year = death_year;
+		this.birthYear = birth_year;
+		this.deathYear = death_year;
 	}
 
 	//Utility methods for managing relationships (IMPORTANT for @ManyToMany)
@@ -55,20 +58,20 @@ public class Person {
 		this.name = name;
 	}
 
-	public Integer getBirth_year() {
-		return birth_year;
+	public Integer getBirthYear() {
+		return birthYear;
 	}
 
-	public void setBirth_year(Integer birth_year) {
-		this.birth_year = birth_year;
+	public void setBirthYear(Integer birth_year) {
+		this.birthYear = birth_year;
 	}
 
-	public Integer getDeath_year() {
-		return death_year;
+	public Integer getDeathYear() {
+		return deathYear;
 	}
 
-	public void setDeath_year(Integer death_year) {
-		this.death_year = death_year;
+	public void setDeathYear(Integer death_year) {
+		this.deathYear = death_year;
 	}
 
 	public Set<Book> getBooks() {
@@ -95,9 +98,9 @@ public class Person {
 
 	@Override
 	public String toString() {
-		String birthYearStr = (birth_year != null) ? String.valueOf(birth_year) : "N/A";
-		String deathYearStr = (death_year != null) ? String.valueOf(death_year) : "N/A";
+		String birthYearStr = (birthYear != null) ? String.valueOf(birthYear) : "N/A";
+		String deathYearStr = (deathYear != null) ? String.valueOf(deathYear) : "N/A";
 
-		return "  - Name: " + name + " (Birth: " + birthYearStr + ", Death: " + deathYearStr + ")";
+		return "- Name: " + name + " (Birth: " + birthYearStr + ", Death: " + deathYearStr + ")";
 	}
 }

@@ -17,7 +17,7 @@ public class GeminiApiHttpClient implements GeminiAPIClient {
 			return Optional.empty();
 		}
 		try {
-			String prompt = "Summarize the next text, limit 200 characters, return only the result:" + originalText;
+			String prompt = "Summarize the next text in max 300 characters and return only the result: " + originalText;
 			GenerateContentResponse response = client.models.generateContent("gemini-2.5-flash", prompt, null);
 			String summary = response.text();
 			if (summary != null && !summary.isBlank()) {
@@ -25,6 +25,7 @@ public class GeminiApiHttpClient implements GeminiAPIClient {
 			}
 		} catch (Exception e) {
 			System.err.println("Error while generating content with Gemini API: " + e.getMessage());
+			return Optional.of(originalText.substring(0, 250) + "...");
 		}
 		return Optional.empty();
 	}

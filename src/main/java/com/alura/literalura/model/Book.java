@@ -14,9 +14,10 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = false, length = 500)
 	private String title;
 	//	private List<String> subjects;
+	@Column(length = 350)
 	private String summaries;
 	//	private List<Person> translators;
 //	private List<String> bookshelves;
@@ -26,8 +27,10 @@ public class Book {
 	@Enumerated(EnumType.STRING)
 	private Set<Language> languages = new HashSet<>();
 	private Boolean copyright;
-	private String media_type;
-	private Integer download_count;
+	@Column(name = "media_type")
+	private String mediaType;
+	@Column(name = "download_count")
+	private Integer downloadCount;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(
 					name = "book_persons",
@@ -49,8 +52,8 @@ public class Book {
 		}
 //		this.bookshelves = bookApi.bookshelves();
 		this.copyright = bookApi.copyright();
-		this.media_type = bookApi.mediaType();
-		this.download_count = bookApi.downloadCount();
+		this.mediaType = bookApi.mediaType();
+		this.downloadCount = bookApi.downloadCount();
 	}
 
 	public void addPerson(Person person) {
@@ -82,20 +85,20 @@ public class Book {
 		this.copyright = copyright;
 	}
 
-	public String getMedia_type() {
-		return media_type;
+	public String getMediaType() {
+		return mediaType;
 	}
 
-	public void setMedia_type(String media_type) {
-		this.media_type = media_type;
+	public void setMediaType(String media_type) {
+		this.mediaType = media_type;
 	}
 
-	public Integer getDownload_count() {
-		return download_count;
+	public Integer getDownloadCount() {
+		return downloadCount;
 	}
 
-	public void setDownload_count(Integer download_count) {
-		this.download_count = download_count;
+	public void setDownloadCount(Integer download_count) {
+		this.downloadCount = download_count;
 	}
 
 	public Set<Person> getPersons() {
@@ -124,14 +127,15 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book #" + id + '\n' +
+		return
 						"Title: " + title + '\n' +
 						"Summaries: " + summaries + '\n' +
 						"Languages: " + languages.stream().map(Language::getDisplayName).collect(Collectors.joining(", ")) + '\n' +
 						"Copyright: " + copyright + '\n' +
-						"Media type: " + media_type + '\n' +
-						"Download count: " + download_count + '\n' +
-						"Authors: " + persons.stream().map(Person::toString).collect(Collectors.joining(", "));
+						"Media type: " + mediaType + '\n' +
+						"Download count: " + downloadCount + '\n' +
+						"Author(s): " + '\n' +
+						persons.stream().map(Person::toString).collect(Collectors.joining("\n"));
 	}
 
 	// Crucial equals and hasCode implementation for Sets
